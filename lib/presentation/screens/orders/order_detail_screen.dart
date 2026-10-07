@@ -85,7 +85,6 @@ class OrderDetailScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Order Status Banner Card
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -166,7 +165,6 @@ class OrderDetailScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
 
-                // Customer Info Card
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -203,7 +201,6 @@ class OrderDetailScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
 
-                // Items list Card
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -308,7 +305,6 @@ class OrderDetailScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 24),
 
-                // Cancel Order Action Button if eligible
                 if (order.canBeCancelled) ...[
                   OutlinedButton.icon(
                     onPressed: () => _confirmCancelOrder(context, ref),

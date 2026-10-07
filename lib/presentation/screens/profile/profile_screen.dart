@@ -69,7 +69,6 @@ class ProfileScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // User Avatar Card
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -122,7 +121,6 @@ class ProfileScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
 
-            // Settings List Card
             Material(
               color: theme.cardColor,
               shape: RoundedRectangleBorder(
@@ -201,7 +199,6 @@ class ProfileScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
 
-            // Logout Card
             Material(
               color: theme.cardColor,
               shape: RoundedRectangleBorder(

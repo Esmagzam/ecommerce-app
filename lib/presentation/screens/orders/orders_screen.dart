@@ -117,7 +117,6 @@ class _OrdersScreenState extends ConsumerState<OrdersScreen> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      // Top row: order number + status badge
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -157,7 +156,6 @@ class _OrdersScreenState extends ConsumerState<OrdersScreen> {
                                       ),
                                       const SizedBox(height: 8),
 
-                                      // Date & Items count
                                       Row(
                                         children: [
                                           Icon(
@@ -172,7 +170,7 @@ class _OrdersScreenState extends ConsumerState<OrdersScreen> {
                                             style: TextStyle(
                                               fontSize: 12,
                                               color: theme.colorScheme.onSurface
-                                                  .withValues(alpha: 0.6),
+                                                .withValues(alpha: 0.6),
                                             ),
                                           ),
                                           const Spacer(),
@@ -181,14 +179,13 @@ class _OrdersScreenState extends ConsumerState<OrdersScreen> {
                                             style: TextStyle(
                                               fontSize: 12,
                                               color: theme.colorScheme.onSurface
-                                                  .withValues(alpha: 0.6),
+                                                .withValues(alpha: 0.6),
                                             ),
                                           ),
                                         ],
                                       ),
                                       const Divider(height: 20),
 
-                                      // Total Price + Detail Arrow
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,

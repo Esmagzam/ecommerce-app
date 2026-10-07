@@ -78,7 +78,6 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Header
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -101,7 +100,6 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Categories
                   const SizedBox(height: 12),
                   const Text(
                     'Ангилал',
@@ -134,7 +132,6 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
                     ],
                   ),
 
-                  // Tags
                   const SizedBox(height: 20),
                   const Text(
                     'Таг',
@@ -167,7 +164,6 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
                     ],
                   ),
 
-                  // Price Range
                   const SizedBox(height: 20),
                   const Text(
                     'Үнийн хязгаар (₮)',

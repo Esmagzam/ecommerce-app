@@ -43,7 +43,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CheckoutScreen(),
       ),
-      // Deep linkable product detail: /products/:id
       GoRoute(
         path: '/products/:id',
         parentNavigatorKey: _rootNavigatorKey,
@@ -63,13 +62,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         },
       ),
 
-      // Bottom Navigation Main Layout Shell
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainLayout(navigationShell: navigationShell);
         },
         branches: [
-          // Tab 0: Home
           StatefulShellBranch(
             navigatorKey: _homeNavigatorKey,
             routes: [
@@ -80,7 +77,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ],
           ),
 
-          // Tab 1: Products
           StatefulShellBranch(
             navigatorKey: _productsNavigatorKey,
             routes: [
@@ -91,7 +87,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ],
           ),
 
-          // Tab 2: Cart
           StatefulShellBranch(
             navigatorKey: _cartNavigatorKey,
             routes: [
@@ -102,7 +97,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ],
           ),
 
-          // Tab 3: Orders
           StatefulShellBranch(
             navigatorKey: _ordersNavigatorKey,
             routes: [
@@ -113,7 +107,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ],
           ),
 
-          // Tab 4: Profile
           StatefulShellBranch(
             navigatorKey: _profileNavigatorKey,
             routes: [

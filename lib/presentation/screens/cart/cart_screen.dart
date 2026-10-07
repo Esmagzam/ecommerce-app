@@ -79,7 +79,6 @@ class CartScreen extends ConsumerWidget {
                         ),
                         child: Row(
                           children: [
-                            // Thumbnail
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: Container(
@@ -99,7 +98,6 @@ class CartScreen extends ConsumerWidget {
                             ),
                             const SizedBox(width: 14),
 
-                            // Item details
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +124,6 @@ class CartScreen extends ConsumerWidget {
                               ),
                             ),
 
-                            // Counter & Delete
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -194,7 +191,6 @@ class CartScreen extends ConsumerWidget {
                   ),
                 ),
 
-                // Bottom Checkout Summary
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(

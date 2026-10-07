@@ -89,7 +89,6 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               children: [
-                // Search Field
                 Expanded(
                   child: TextField(
                     controller: _searchController,
@@ -118,7 +117,6 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
                 ),
                 const SizedBox(width: 8),
 
-                // Filter Button with Badge
                 Badge(
                   isLabelVisible: state.hasActiveFilters,
                   child: Container(
@@ -153,7 +151,6 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
       ),
       body: Column(
         children: [
-          // Sort Bar & Active Filter Info
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
@@ -216,7 +213,6 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
             ),
           ),
 
-          // Active filter indicator if any
           if (state.hasActiveFilters)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -251,7 +247,6 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
               ),
             ),
 
-          // Product List Grid
           Expanded(
             child: state.isLoading
                 ? const LoadingIndicator(message: 'Бүтээгдэхүүн уншиж байна...')

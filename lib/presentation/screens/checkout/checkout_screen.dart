@@ -54,7 +54,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
         );
 
     if (mounted && order != null) {
-      // Invalidate orders list so it refreshes with the new order
       ref.invalidate(ordersProvider);
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -65,7 +64,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
         ),
       );
 
-      // Navigate to order detail screen
       context.pushReplacement('/orders/${order.id}');
     }
   }
@@ -87,7 +85,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // General Error Banner if any
               if (checkoutState.generalError != null) ...[
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -118,7 +115,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                 const SizedBox(height: 16),
               ],
 
-              // Customer Info Section
               const Text(
                 'Хүлээн авагчийн мэдээлэл',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -173,7 +169,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
               ),
               const SizedBox(height: 24),
 
-              // Order Summary Card
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(

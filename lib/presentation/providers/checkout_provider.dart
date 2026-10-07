@@ -71,7 +71,6 @@ class CheckoutNotifier extends Notifier<CheckoutState> {
         items: cartState.items,
       );
 
-      // Clear cart on success
       await ref.read(cartProvider.notifier).clearCart();
 
       state = CheckoutState(

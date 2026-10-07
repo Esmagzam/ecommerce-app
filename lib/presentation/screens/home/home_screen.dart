@@ -49,7 +49,6 @@ class HomeScreen extends ConsumerWidget {
             icon: const Icon(Icons.search_rounded),
             tooltip: 'Хайх',
             onPressed: () {
-              // Switch to products tab
               final router = GoRouter.of(context);
               router.go('/products');
             },
@@ -68,7 +67,6 @@ class HomeScreen extends ConsumerWidget {
                   child: ListView(
                     padding: const EdgeInsets.only(bottom: 24),
                     children: [
-                      // Banner
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Container(
@@ -154,7 +152,6 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
 
-                      // Categories Section
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16.0, vertical: 8.0),
@@ -247,7 +244,6 @@ class HomeScreen extends ConsumerWidget {
 
                       const SizedBox(height: 16),
 
-                      // New Products Section
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16.0, vertical: 8.0),

@@ -47,7 +47,6 @@ class ProductCard extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image & Badge
               Stack(
                 children: [
                   ClipRRect(
@@ -110,7 +109,6 @@ class ProductCard extends ConsumerWidget {
                 ],
               ),
 
-              // Product Info
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(

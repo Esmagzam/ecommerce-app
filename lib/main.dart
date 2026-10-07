@@ -11,7 +11,6 @@ import 'presentation/routing/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Hive storage for offline cart
   await Hive.initFlutter();
   final cartStorage = CartStorageService();
   await cartStorage.init();

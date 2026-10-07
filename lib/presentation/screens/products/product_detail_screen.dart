@@ -68,7 +68,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Image Carousel
                       if (images.isNotEmpty)
                         SStackCarousel(
                           pageController: _pageController,
@@ -96,7 +95,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Tags & Categories
                             if (product.categories.isNotEmpty ||
                                 product.tags.isNotEmpty)
                               Wrap(
@@ -143,7 +141,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                               ),
                             const SizedBox(height: 12),
 
-                            // Product Title
                             Text(
                               product.name,
                               style: theme.textTheme.headlineSmall?.copyWith(
@@ -152,7 +149,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                             ),
                             const SizedBox(height: 12),
 
-                            // Price
                             Text(
                               Formatters.formatCurrency(product.price),
                               style: const TextStyle(
@@ -166,7 +162,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                             const Divider(),
                             const SizedBox(height: 12),
 
-                            // Description
                             const Text(
                               'Тайлбар',
                               style: TextStyle(
@@ -189,7 +184,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                             ),
                             const SizedBox(height: 28),
 
-                            // Related Products
                             if (related.isNotEmpty) ...[
                               const Divider(),
                               const SizedBox(height: 12),
@@ -228,7 +222,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                 ),
               ),
 
-              // Bottom Sticky Add to Cart Action Bar
               Container(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20, vertical: 14),
@@ -249,7 +242,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   top: false,
                   child: Row(
                     children: [
-                      // Quantity Selector
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: theme.dividerColor),
@@ -287,7 +279,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       ),
                       const SizedBox(width: 16),
 
-                      // Add to Cart Button
                       Expanded(
                         child: ElevatedButton.icon(
                           onPressed: () {
