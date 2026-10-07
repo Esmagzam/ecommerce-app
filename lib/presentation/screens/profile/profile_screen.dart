@@ -123,12 +123,13 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: 20),
 
             // Settings List Card
-            Container(
-              decoration: BoxDecoration(
-                color: theme.cardColor,
+            Material(
+              color: theme.cardColor,
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: theme.dividerColor),
+                side: BorderSide(color: theme.dividerColor),
               ),
+              clipBehavior: Clip.antiAlias,
               child: Column(
                 children: [
                   ListTile(
@@ -201,12 +202,13 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: 20),
 
             // Logout Card
-            Container(
-              decoration: BoxDecoration(
-                color: theme.cardColor,
+            Material(
+              color: theme.cardColor,
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: theme.dividerColor),
+                side: BorderSide(color: theme.dividerColor),
               ),
+              clipBehavior: Clip.antiAlias,
               child: ListTile(
                 leading: Container(
                   padding: const EdgeInsets.all(8),
