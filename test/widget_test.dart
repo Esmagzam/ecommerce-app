@@ -21,10 +21,10 @@ void main() {
       ),
     );
 
-    // Initial frame renders splash screen
+    // Эхний фреймд splash дэлгэц дүрслэгдэнэ
     expect(find.byType(EcommerceApp), findsOneWidget);
 
-    // Settle splash delay timer
+    // Splash дэлгэцийн саатлын таймерыг дуусгана
     await tester.pump(const Duration(seconds: 1));
   });
 }

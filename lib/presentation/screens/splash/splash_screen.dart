@@ -19,7 +19,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   Future<void> _checkAuth() async {
-    // Add small aesthetic delay for splash screen visibility
+    // Splash дэлгэцийн логог харуулах зориудын богино хугацааны саатал
     await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
 

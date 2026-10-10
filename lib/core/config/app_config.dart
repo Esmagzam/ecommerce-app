@@ -1,8 +1,8 @@
 class AppConfig {
   AppConfig._();
 
-  /// API Base URL passed via `--dart-define=API_URL=...`
-  /// Defaults to the production URL.
+  /// `--dart-define=API_URL=...` замаар дамжуулах API-ийн үндсэн хаяг.
+  /// Тодорхойлоогүй тохиолдолд үндсэн production хаягийг ашиглана.
   static const String apiBaseUrl = String.fromEnvironment(
     'API_URL',
     defaultValue: 'https://job.sutainbuyant.com/api/v1',

@@ -20,7 +20,7 @@ final apiServiceProvider = Provider<ApiService>((ref) {
   return ApiService(
     secureStorageService: secureStorage,
     onUnauthorized: () {
-      // Token expired or invalid; auth provider can listen or interceptor handles deletion
+      // Токен хүчингүй болох үед: Auth provider чагнах эсвэл interceptor токеныг устгана
     },
   );
 });

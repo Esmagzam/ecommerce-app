@@ -75,7 +75,7 @@ void main() {
       await container.read(cartProvider.notifier).decrement(1);
       expect(container.read(cartProvider).items.first.quantity, 2);
 
-      // Decrementing down from 1 removes item
+      // Тоо ширхэгийг 1-ээс доош бууруулахад тухайн барааг сагснаас хасна
       await container.read(cartProvider.notifier).decrement(1);
       expect(container.read(cartProvider).items.first.quantity, 1);
 

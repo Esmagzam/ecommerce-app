@@ -118,7 +118,7 @@ class AuthRepository {
     try {
       await apiService.post('/logout');
     } catch (_) {
-      // Even if network fails, token must be erased locally
+      // Сүлжээний хүсэлт амжилтгүй болсон ч токеныг локал сангаас заавал устгана
     } finally {
       await secureStorageService.deleteToken();
     }
