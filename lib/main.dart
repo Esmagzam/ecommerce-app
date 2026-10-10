@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'core/config/app_config.dart';
@@ -9,7 +10,8 @@ import 'presentation/providers/theme_provider.dart';
 import 'presentation/routing/app_router.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await Hive.initFlutter();
   final cartStorage = CartStorageService();
@@ -23,6 +25,8 @@ void main() async {
       child: const EcommerceApp(),
     ),
   );
+
+  FlutterNativeSplash.remove();
 }
 
 class EcommerceApp extends ConsumerWidget {
