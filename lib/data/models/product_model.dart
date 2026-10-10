@@ -29,10 +29,14 @@ class ProductModel {
   List<String> get imageGallery {
     final list = <String>[];
     if (imageUrl != null && imageUrl!.isNotEmpty) list.add(imageUrl!);
-    if (previewUrl != null && previewUrl!.isNotEmpty && !list.contains(previewUrl)) {
+    if (previewUrl != null &&
+        previewUrl!.isNotEmpty &&
+        !list.contains(previewUrl)) {
       list.add(previewUrl!);
     }
-    if (thumbnailUrl != null && thumbnailUrl!.isNotEmpty && !list.contains(thumbnailUrl)) {
+    if (thumbnailUrl != null &&
+        thumbnailUrl!.isNotEmpty &&
+        !list.contains(thumbnailUrl)) {
       list.add(thumbnailUrl!);
     }
     return list;

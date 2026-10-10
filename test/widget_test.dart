@@ -8,15 +8,15 @@ import 'package:ecommerce_app/presentation/providers/core_providers.dart';
 class MockCartRepository extends Mock implements CartRepository {}
 
 void main() {
-  testWidgets('EcommerceApp smoke test loads MaterialApp', (WidgetTester tester) async {
+  testWidgets('EcommerceApp smoke test loads MaterialApp', (
+    WidgetTester tester,
+  ) async {
     final mockCartRepo = MockCartRepository();
     when(() => mockCartRepo.getCartItems()).thenReturn([]);
 
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [
-          cartRepositoryProvider.overrideWithValue(mockCartRepo),
-        ],
+        overrides: [cartRepositoryProvider.overrideWithValue(mockCartRepo)],
         child: const EcommerceApp(),
       ),
     );

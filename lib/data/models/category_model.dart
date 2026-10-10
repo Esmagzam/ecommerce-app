@@ -41,7 +41,8 @@ class CategoryModel {
       'id': id,
       'name': name,
       if (description != null) 'description': description,
-      if (imageUrl != null) 'image': {'url': imageUrl, 'thumbnail': thumbnailUrl},
+      if (imageUrl != null)
+        'image': {'url': imageUrl, 'thumbnail': thumbnailUrl},
       'products_count': productsCount,
     };
   }

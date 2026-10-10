@@ -10,10 +10,7 @@ class ProductDetailResult {
   final ProductModel product;
   final List<ProductModel> related;
 
-  const ProductDetailResult({
-    required this.product,
-    required this.related,
-  });
+  const ProductDetailResult({required this.product, required this.related});
 }
 
 class ProductRepository {
@@ -70,10 +67,7 @@ class ProductRepository {
     int perPage = 20,
   }) async {
     try {
-      final queryParams = <String, dynamic>{
-        'page': page,
-        'per_page': perPage,
-      };
+      final queryParams = <String, dynamic>{'page': page, 'per_page': perPage};
 
       if (search != null && search.trim().isNotEmpty) {
         queryParams['search'] = search.trim();
@@ -143,10 +137,7 @@ class ProductRepository {
           }
         }
 
-        return ProductDetailResult(
-          product: product,
-          related: relatedList,
-        );
+        return ProductDetailResult(product: product, related: relatedList);
       }
       throw const ServerFailure(message: 'Бүтээгдэхүүний мэдээлэл олдсонгүй.');
     } on ServerException catch (e) {

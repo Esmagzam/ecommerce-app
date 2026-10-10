@@ -1,15 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/errors/failures.dart';
 import '../../data/models/user_model.dart';
 import 'core_providers.dart';
 
-enum AuthStatus {
-  initial,
-  loading,
-  authenticated,
-  unauthenticated,
-  error,
-}
+enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
 
 class AuthState {
   final AuthStatus status;
@@ -30,10 +25,14 @@ class AuthState {
       AuthState(status: AuthStatus.authenticated, user: user);
   factory AuthState.unauthenticated() =>
       const AuthState(status: AuthStatus.unauthenticated);
-  factory AuthState.error(String message, [Failure? failure]) =>
-      AuthState(status: AuthStatus.error, errorMessage: message, failure: failure);
+  factory AuthState.error(String message, [Failure? failure]) => AuthState(
+    status: AuthStatus.error,
+    errorMessage: message,
+    failure: failure,
+  );
 
-  bool get isAuthenticated => status == AuthStatus.authenticated && user != null;
+  bool get isAuthenticated =>
+      status == AuthStatus.authenticated && user != null;
   bool get isLoading => status == AuthStatus.loading;
 }
 
@@ -59,10 +58,7 @@ class AuthNotifier extends Notifier<AuthState> {
     }
   }
 
-  Future<bool> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<bool> login({required String email, required String password}) async {
     state = AuthState.loading();
     try {
       final authRepo = ref.read(authRepositoryProvider);

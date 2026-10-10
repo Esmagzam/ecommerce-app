@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/empty_view.dart';
@@ -30,7 +31,8 @@ class CartScreen extends ConsumerWidget {
                   builder: (context) => AlertDialog(
                     title: const Text('Сагс хоослох'),
                     content: const Text(
-                        'Та сагсан дахь бүх бүтээгдэхүүнийг устгахдаа итгэлтэй байна уу?'),
+                      'Та сагсан дахь бүх бүтээгдэхүүнийг устгахдаа итгэлтэй байна уу?',
+                    ),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -85,7 +87,8 @@ class CartScreen extends ConsumerWidget {
                                 width: 70,
                                 height: 70,
                                 color: Colors.grey.withValues(alpha: 0.1),
-                                child: item.imageUrl != null &&
+                                child:
+                                    item.imageUrl != null &&
                                         item.imageUrl!.isNotEmpty
                                     ? CachedNetworkImage(
                                         imageUrl: item.imageUrl!,
@@ -141,8 +144,9 @@ class CartScreen extends ConsumerWidget {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: theme.dividerColor),
+                                    border: Border.all(
+                                      color: theme.dividerColor,
+                                    ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(
@@ -154,13 +158,16 @@ class CartScreen extends ConsumerWidget {
                                             .decrement(item.productId),
                                         child: const Padding(
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 6, vertical: 4),
+                                            horizontal: 6,
+                                            vertical: 4,
+                                          ),
                                           child: Icon(Icons.remove, size: 16),
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 8),
+                                          horizontal: 8,
+                                        ),
                                         child: Text(
                                           '${item.quantity}',
                                           style: const TextStyle(
@@ -175,7 +182,9 @@ class CartScreen extends ConsumerWidget {
                                             .increment(item.productId),
                                         child: const Padding(
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 6, vertical: 4),
+                                            horizontal: 6,
+                                            vertical: 4,
+                                          ),
                                           child: Icon(Icons.add, size: 16),
                                         ),
                                       ),
@@ -217,8 +226,9 @@ class CartScreen extends ConsumerWidget {
                               'Нийт дүн (${cartState.totalItemCount} ширхэг):',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: theme.colorScheme.onSurface
-                                    .withValues(alpha: 0.7),
+                                color: theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.7,
+                                ),
                               ),
                             ),
                             Text(
@@ -239,7 +249,8 @@ class CartScreen extends ConsumerWidget {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text(
-                                      'Захиалга өгөхийн тулд эхлээд нэвтэрнэ үү.'),
+                                    'Захиалга өгөхийн тулд эхлээд нэвтэрнэ үү.',
+                                  ),
                                   behavior: SnackBarBehavior.floating,
                                 ),
                               );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/validator.dart';
 import '../../../core/widgets/custom_button.dart';
@@ -35,7 +36,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
-    final success = await ref.read(authProvider.notifier).register(
+    final success = await ref
+        .read(authProvider.notifier)
+        .register(
           name: _nameController.text.trim(),
           email: _emailController.text.trim(),
           password: _passwordController.text,
@@ -55,13 +58,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final fieldErrors = authState.failure?.fieldErrors;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Бүртгүүлэх'),
-      ),
+      appBar: AppBar(title: const Text('Бүртгүүлэх')),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 16.0,
+            ),
             child: Form(
               key: _formKey,
               child: Column(
@@ -97,8 +101,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.error_outline,
-                              color: AppColors.error, size: 20),
+                          const Icon(
+                            Icons.error_outline,
+                            color: AppColors.error,
+                            size: 20,
+                          ),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
@@ -122,7 +129,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     textInputAction: TextInputAction.next,
                     prefixIcon: const Icon(Icons.person_outline, size: 20),
                     errorText: fieldErrors?['name']?.firstOrNull,
-                    validator: (v) => Validator.required(v, 'Нэрээ оруулна уу.'),
+                    validator: (v) =>
+                        Validator.required(v, 'Нэрээ оруулна уу.'),
                   ),
                   const SizedBox(height: 16),
 
@@ -171,7 +179,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     textInputAction: TextInputAction.done,
                     onSubmitted: (_) => _submit(),
                     prefixIcon: const Icon(Icons.lock_reset_outlined, size: 20),
-                    errorText: fieldErrors?['password_confirmation']?.firstOrNull,
+                    errorText:
+                        fieldErrors?['password_confirmation']?.firstOrNull,
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureConfirmPassword
@@ -203,7 +212,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       Text(
                         'Аль хэдийн бүртгэлтэй юу? ',
                         style: TextStyle(
-                          color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.7,
+                          ),
                         ),
                       ),
                       GestureDetector(

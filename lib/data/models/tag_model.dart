@@ -3,11 +3,7 @@ class TagModel {
   final String name;
   final int? productsCount;
 
-  const TagModel({
-    required this.id,
-    required this.name,
-    this.productsCount,
-  });
+  const TagModel({required this.id, required this.name, this.productsCount});
 
   factory TagModel.fromJson(Map<String, dynamic> json) {
     return TagModel(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/debouncer.dart';
 import '../../../core/widgets/empty_view.dart';
@@ -61,7 +62,9 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
         initialMinPrice: state.minPrice,
         initialMaxPrice: state.maxPrice,
         onApply: ({categoryId, tagId, minPrice, maxPrice}) {
-          ref.read(productListProvider.notifier).applyFilters(
+          ref
+              .read(productListProvider.notifier)
+              .applyFilters(
                 categoryId: categoryId,
                 tagId: tagId,
                 minPrice: minPrice,
@@ -86,7 +89,10 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -100,12 +106,16 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
                               icon: const Icon(Icons.clear, size: 18),
                               onPressed: () {
                                 _searchController.clear();
-                                ref.read(productListProvider.notifier).setSearch('');
+                                ref
+                                    .read(productListProvider.notifier)
+                                    .setSearch('');
                               },
                             )
                           : null,
                       contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 10),
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
                       fillColor: theme.cardColor,
                     ),
                     onChanged: (value) {
@@ -219,7 +229,11 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
               color: AppColors.primary.withValues(alpha: 0.05),
               child: Row(
                 children: [
-                  const Icon(Icons.filter_alt, size: 16, color: AppColors.primary),
+                  const Icon(
+                    Icons.filter_alt,
+                    size: 16,
+                    color: AppColors.primary,
+                  ),
                   const SizedBox(width: 6),
                   const Expanded(
                     child: Text(
@@ -251,57 +265,56 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
             child: state.isLoading
                 ? const LoadingIndicator(message: 'Бүтээгдэхүүн уншиж байна...')
                 : state.error != null
-                    ? ErrorView(
-                        error: state.error,
-                        onRetry: () =>
-                            ref.read(productListProvider.notifier).refresh(),
-                      )
-                    : state.products.isEmpty
-                        ? EmptyView(
-                            icon: Icons.search_off_rounded,
-                            title: 'Бүтээгдэхүүн олдсонгүй',
-                            subtitle:
-                                'Хайлтын үг эсвэл шүүлтүүрийг өөрчилж үзнэ үү.',
-                            actionButtonText: state.hasActiveFilters
-                                ? 'Шүүлтүүр цэвэрлэх'
-                                : null,
-                            onActionPressed: state.hasActiveFilters
-                                ? () => ref
-                                    .read(productListProvider.notifier)
-                                    .resetFilters()
-                                : null,
-                          )
-                        : RefreshIndicator(
-                            onRefresh: () => ref
-                                .read(productListProvider.notifier)
-                                .refresh(),
-                            child: GridView.builder(
-                              controller: _scrollController,
-                              padding: const EdgeInsets.all(16),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 0.68,
-                                crossAxisSpacing: 12,
-                                mainAxisSpacing: 12,
-                              ),
-                              itemCount: state.products.length +
-                                  (state.isLoadingMore ? 1 : 0),
-                              itemBuilder: (context, index) {
-                                if (index == state.products.length) {
-                                  return const Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(16.0),
-                                      child: CircularProgressIndicator(
-                                          strokeWidth: 2.5),
-                                    ),
-                                  );
-                                }
-                                final product = state.products[index];
-                                return ProductCard(product: product);
-                              },
-                            ),
+                ? ErrorView(
+                    error: state.error,
+                    onRetry: () =>
+                        ref.read(productListProvider.notifier).refresh(),
+                  )
+                : state.products.isEmpty
+                ? EmptyView(
+                    icon: Icons.search_off_rounded,
+                    title: 'Бүтээгдэхүүн олдсонгүй',
+                    subtitle: 'Хайлтын үг эсвэл шүүлтүүрийг өөрчилж үзнэ үү.',
+                    actionButtonText: state.hasActiveFilters
+                        ? 'Шүүлтүүр цэвэрлэх'
+                        : null,
+                    onActionPressed: state.hasActiveFilters
+                        ? () => ref
+                              .read(productListProvider.notifier)
+                              .resetFilters()
+                        : null,
+                  )
+                : RefreshIndicator(
+                    onRefresh: () =>
+                        ref.read(productListProvider.notifier).refresh(),
+                    child: GridView.builder(
+                      controller: _scrollController,
+                      padding: const EdgeInsets.all(16),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.68,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
                           ),
+                      itemCount:
+                          state.products.length + (state.isLoadingMore ? 1 : 0),
+                      itemBuilder: (context, index) {
+                        if (index == state.products.length) {
+                          return const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.5,
+                              ),
+                            ),
+                          );
+                        }
+                        final product = state.products[index];
+                        return ProductCard(product: product);
+                      },
+                    ),
+                  ),
           ),
         ],
       ),

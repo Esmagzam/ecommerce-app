@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../data/models/product_model.dart';
@@ -11,26 +12,20 @@ class ProductCard extends ConsumerWidget {
   final ProductModel product;
   final double? width;
 
-  const ProductCard({
-    super.key,
-    required this.product,
-    this.width,
-  });
+  const ProductCard({super.key, required this.product, this.width});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final imageUrl = product.thumbnailUrl ?? product.previewUrl ?? product.imageUrl;
+    final imageUrl =
+        product.thumbnailUrl ?? product.previewUrl ?? product.imageUrl;
 
     return Container(
       width: width,
       decoration: BoxDecoration(
         color: theme.cardColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: theme.dividerColor,
-          width: 1,
-        ),
+        border: Border.all(color: theme.dividerColor, width: 1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.03),
@@ -50,7 +45,9 @@ class ProductCard extends ConsumerWidget {
               Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
+                    ),
                     child: AspectRatio(
                       aspectRatio: 1.05,
                       child: imageUrl != null && imageUrl.isNotEmpty
@@ -63,7 +60,9 @@ class ProductCard extends ConsumerWidget {
                                   child: SizedBox(
                                     width: 20,
                                     height: 20,
-                                    child: CircularProgressIndicator(strokeWidth: 2),
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -91,7 +90,10 @@ class ProductCard extends ConsumerWidget {
                       top: 8,
                       left: 8,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.primary,
                           borderRadius: BorderRadius.circular(8),
@@ -145,7 +147,9 @@ class ProductCard extends ConsumerWidget {
                             ScaffoldMessenger.of(context).hideCurrentSnackBar();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('${product.name} сагсанд нэмэгдлээ'),
+                                content: Text(
+                                  '${product.name} сагсанд нэмэгдлээ',
+                                ),
                                 duration: const Duration(seconds: 1),
                                 behavior: SnackBarBehavior.floating,
                                 shape: RoundedRectangleBorder(

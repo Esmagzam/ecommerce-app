@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/errors/failures.dart';
 import '../../data/models/category_model.dart';
 import '../../data/models/product_model.dart';
@@ -47,7 +48,10 @@ class HomeNotifier extends Notifier<HomeState> {
 
     try {
       final categoriesFuture = productRepo.getCategories();
-      final productsFuture = productRepo.getProducts(sort: 'newest', perPage: 10);
+      final productsFuture = productRepo.getProducts(
+        sort: 'newest',
+        perPage: 10,
+      );
 
       final results = await Future.wait([categoriesFuture, productsFuture]);
 

@@ -3,11 +3,7 @@ class Failure {
   final int? statusCode;
   final Map<String, List<String>>? fieldErrors;
 
-  const Failure({
-    required this.message,
-    this.statusCode,
-    this.fieldErrors,
-  });
+  const Failure({required this.message, this.statusCode, this.fieldErrors});
 
   String? getFirstErrorFor(String field) {
     if (fieldErrors == null) return null;
@@ -23,8 +19,9 @@ class Failure {
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure([String message = 'Интернэт холболт байхгүй байна. Дахин оролдоно уу.'])
-      : super(message: message);
+  const NetworkFailure([
+    String message = 'Интернэт холболт байхгүй байна. Дахин оролдоно уу.',
+  ]) : super(message: message);
 }
 
 class ServerFailure extends Failure {
@@ -37,5 +34,5 @@ class ServerFailure extends Failure {
 
 class AuthFailure extends Failure {
   const AuthFailure([String message = 'Нэвтрэх шаардлагатай байна.'])
-      : super(message: message, statusCode: 401);
+    : super(message: message, statusCode: 401);
 }

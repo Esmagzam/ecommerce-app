@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/validator.dart';
 import '../../../core/widgets/custom_text_field.dart';
@@ -37,7 +38,9 @@ class _ChangePasswordDialogState extends ConsumerState<ChangePasswordDialog> {
       _error = null;
     });
 
-    final success = await ref.read(authProvider.notifier).changePassword(
+    final success = await ref
+        .read(authProvider.notifier)
+        .changePassword(
           currentPassword: _currentPasswordController.text,
           password: _newPasswordController.text,
           passwordConfirmation: _confirmPasswordController.text,
@@ -103,8 +106,8 @@ class _ChangePasswordDialogState extends ConsumerState<ChangePasswordDialog> {
                 hintText: 'Дахин оруулна уу',
                 obscureText: true,
                 prefixIcon: const Icon(Icons.lock_reset, size: 20),
-                validator: (v) => Validator.confirmPassword(
-                    v, _newPasswordController.text),
+                validator: (v) =>
+                    Validator.confirmPassword(v, _newPasswordController.text),
               ),
             ],
           ),
@@ -117,9 +120,7 @@ class _ChangePasswordDialogState extends ConsumerState<ChangePasswordDialog> {
         ),
         ElevatedButton(
           onPressed: _isLoading ? null : _submit,
-          style: ElevatedButton.styleFrom(
-            minimumSize: const Size(100, 40),
-          ),
+          style: ElevatedButton.styleFrom(minimumSize: const Size(100, 40)),
           child: _isLoading
               ? const SizedBox(
                   width: 18,

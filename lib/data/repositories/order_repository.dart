@@ -58,20 +58,15 @@ class OrderRepository {
         'shipping_address': shippingAddress.trim(),
         if (note != null && note.trim().isNotEmpty) 'note': note.trim(),
         'items': items
-            .map((e) => {
-                  'product_id': e.productId,
-                  'quantity': e.quantity,
-                })
+            .map((e) => {'product_id': e.productId, 'quantity': e.quantity})
             .toList(),
       };
 
-      final response = await apiService.post(
-        '/shop/orders',
-        data: payload,
-      );
+      final response = await apiService.post('/shop/orders', data: payload);
 
       final data = response.data;
-      if (data is Map<String, dynamic> && data['data'] is Map<String, dynamic>) {
+      if (data is Map<String, dynamic> &&
+          data['data'] is Map<String, dynamic>) {
         return OrderModel.fromJson(data['data'] as Map<String, dynamic>);
       }
       throw const ServerFailure(message: 'Захиалга үүсгэхэд алдаа гарлаа.');
@@ -92,7 +87,8 @@ class OrderRepository {
     try {
       final response = await apiService.get('/shop/orders/$id');
       final data = response.data;
-      if (data is Map<String, dynamic> && data['data'] is Map<String, dynamic>) {
+      if (data is Map<String, dynamic> &&
+          data['data'] is Map<String, dynamic>) {
         return OrderModel.fromJson(data['data'] as Map<String, dynamic>);
       }
       throw const ServerFailure(message: 'Захиалгын мэдээлэл олдсонгүй.');
@@ -113,7 +109,8 @@ class OrderRepository {
     try {
       final response = await apiService.post('/shop/orders/$id/cancel');
       final data = response.data;
-      if (data is Map<String, dynamic> && data['data'] is Map<String, dynamic>) {
+      if (data is Map<String, dynamic> &&
+          data['data'] is Map<String, dynamic>) {
         return OrderModel.fromJson(data['data'] as Map<String, dynamic>);
       }
       throw const ServerFailure(message: 'Захиалга цуцлахад алдаа гарлаа.');

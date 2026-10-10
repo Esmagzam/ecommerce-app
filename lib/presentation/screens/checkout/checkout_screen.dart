@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/utils/validator.dart';
@@ -46,7 +47,9 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
-    final order = await ref.read(checkoutProvider.notifier).submitOrder(
+    final order = await ref
+        .read(checkoutProvider.notifier)
+        .submitOrder(
           customerName: _nameController.text.trim(),
           customerPhone: _phoneController.text.trim(),
           shippingAddress: _addressController.text.trim(),
@@ -75,9 +78,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Захиалга баталгаажуулах'),
-      ),
+      appBar: AppBar(title: const Text('Захиалга баталгаажуулах')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Form(
@@ -97,8 +98,11 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.error_outline,
-                          color: AppColors.error, size: 20),
+                      const Icon(
+                        Icons.error_outline,
+                        color: AppColors.error,
+                        size: 20,
+                      ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
@@ -187,27 +191,29 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                       ),
                     ),
                     const Divider(height: 20),
-                    ...cartState.items.map((item) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  '${item.productName} × ${item.quantity}',
-                                  style: const TextStyle(fontSize: 13),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                    ...cartState.items.map(
+                      (item) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                '${item.productName} × ${item.quantity}',
+                                style: const TextStyle(fontSize: 13),
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              Text(
-                                Formatters.formatCurrency(item.lineTotal),
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                            ),
+                            Text(
+                              Formatters.formatCurrency(item.lineTotal),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
                               ),
-                            ],
-                          ),
-                        )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     const Divider(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -235,7 +241,8 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
               const SizedBox(height: 28),
 
               CustomButton(
-                text: 'Захиалга батлах (${Formatters.formatCurrency(cartState.totalAmount)})',
+                text:
+                    'Захиалга батлах (${Formatters.formatCurrency(cartState.totalAmount)})',
                 isLoading: checkoutState.isSubmitting,
                 onPressed: _submit,
               ),

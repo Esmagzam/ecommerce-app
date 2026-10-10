@@ -30,7 +30,8 @@ void main() {
         'description': 'Арьс арчилгаа',
         'image': {
           'url': 'https://job.sutainbuyant.com/storage/36/placeholder.png',
-          'thumbnail': 'https://job.sutainbuyant.com/storage/36/conversions/thumb.jpg',
+          'thumbnail':
+              'https://job.sutainbuyant.com/storage/36/conversions/thumb.jpg',
         },
         'products_count': 15,
       };
@@ -50,8 +51,10 @@ void main() {
         'price': 29000,
         'image': {
           'url': 'https://job.sutainbuyant.com/storage/42/placeholder.png',
-          'thumbnail': 'https://job.sutainbuyant.com/storage/42/conversions/thumb.jpg',
-          'preview': 'https://job.sutainbuyant.com/storage/42/conversions/prev.jpg',
+          'thumbnail':
+              'https://job.sutainbuyant.com/storage/42/conversions/thumb.jpg',
+          'preview':
+              'https://job.sutainbuyant.com/storage/42/conversions/prev.jpg',
         },
         'categories': [
           {'id': 6, 'name': 'Гоо сайхан'},
@@ -88,7 +91,7 @@ void main() {
             'unit_price': 29000,
             'quantity': 2,
             'line_total': 58000,
-          }
+          },
         ],
       };
 

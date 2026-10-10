@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/validator.dart';
 import '../../../core/widgets/custom_text_field.dart';
@@ -44,7 +45,9 @@ class _EditProfileDialogState extends ConsumerState<EditProfileDialog> {
       _error = null;
     });
 
-    final success = await ref.read(authProvider.notifier).updateProfile(
+    final success = await ref
+        .read(authProvider.notifier)
+        .updateProfile(
           name: _nameController.text.trim(),
           email: _emailController.text.trim(),
         );
@@ -111,9 +114,7 @@ class _EditProfileDialogState extends ConsumerState<EditProfileDialog> {
         ),
         ElevatedButton(
           onPressed: _isLoading ? null : _submit,
-          style: ElevatedButton.styleFrom(
-            minimumSize: const Size(100, 40),
-          ),
+          style: ElevatedButton.styleFrom(minimumSize: const Size(100, 40)),
           child: _isLoading
               ? const SizedBox(
                   width: 18,

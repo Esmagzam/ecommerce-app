@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/empty_view.dart';
 import '../../providers/auth_provider.dart';
@@ -52,7 +53,8 @@ class ProfileScreen extends ConsumerWidget {
         body: EmptyView(
           icon: Icons.person_off_outlined,
           title: 'Нэвтрээгүй байна',
-          subtitle: 'Хувийн мэдээллээ харахын тулд өөрийн бүртгэлээр нэвтэрнэ үү.',
+          subtitle:
+              'Хувийн мэдээллээ харахын тулд өөрийн бүртгэлээр нэвтэрнэ үү.',
           actionButtonText: 'Нэвтрэх',
           onActionPressed: () => context.push('/login'),
         ),
@@ -62,9 +64,7 @@ class ProfileScreen extends ConsumerWidget {
     final user = authState.user!;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Хувийн мэдээлэл'),
-      ),
+      appBar: AppBar(title: const Text('Хувийн мэдээлэл')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -109,8 +109,9 @@ class ProfileScreen extends ConsumerWidget {
                           user.email,
                           style: TextStyle(
                             fontSize: 13,
-                            color: theme.colorScheme.onSurface
-                                .withValues(alpha: 0.6),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.6,
+                            ),
                           ),
                         ),
                       ],
@@ -137,8 +138,11 @@ class ProfileScreen extends ConsumerWidget {
                         color: AppColors.primary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.person_outline,
-                          color: AppColors.primary, size: 20),
+                      child: const Icon(
+                        Icons.person_outline,
+                        color: AppColors.primary,
+                        size: 20,
+                      ),
                     ),
                     title: const Text('Мэдээлэл засах'),
                     subtitle: const Text('Нэр, и-мэйл өөрчлөх'),
@@ -158,8 +162,11 @@ class ProfileScreen extends ConsumerWidget {
                         color: AppColors.secondary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.lock_outline,
-                          color: AppColors.secondary, size: 20),
+                      child: const Icon(
+                        Icons.lock_outline,
+                        color: AppColors.secondary,
+                        size: 20,
+                      ),
                     ),
                     title: const Text('Нууц үг солих'),
                     subtitle: const Text('Аюулгүй байдлын тохиргоо'),
@@ -213,8 +220,11 @@ class ProfileScreen extends ConsumerWidget {
                     color: AppColors.error.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Icon(Icons.logout_rounded,
-                      color: AppColors.error, size: 20),
+                  child: const Icon(
+                    Icons.logout_rounded,
+                    color: AppColors.error,
+                    size: 20,
+                  ),
                 ),
                 title: const Text(
                   'Гарах',

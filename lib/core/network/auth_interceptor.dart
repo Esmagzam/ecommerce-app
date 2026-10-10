@@ -1,5 +1,7 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+
 import '../errors/exceptions.dart';
 import '../storage/secure_storage_service.dart';
 
@@ -7,10 +9,7 @@ class AuthInterceptor extends Interceptor {
   final SecureStorageService secureStorageService;
   final void Function()? onUnauthorized;
 
-  AuthInterceptor({
-    required this.secureStorageService,
-    this.onUnauthorized,
-  });
+  AuthInterceptor({required this.secureStorageService, this.onUnauthorized});
 
   @override
   Future<void> onRequest(
@@ -55,8 +54,9 @@ class AuthInterceptor extends Interceptor {
           final rawErrors = data['errors'] as Map;
           rawErrors.forEach((key, value) {
             if (value is List) {
-              fieldErrors[key.toString()] =
-                  value.map((e) => e.toString()).toList();
+              fieldErrors[key.toString()] = value
+                  .map((e) => e.toString())
+                  .toList();
             } else if (value is String) {
               fieldErrors[key.toString()] = [value];
             }
@@ -95,7 +95,8 @@ class AuthInterceptor extends Interceptor {
 
     if (err.response != null) {
       final data = err.response?.data;
-      String message = 'Сервертэй холбогдоход алдаа гарлаа (${err.response?.statusCode}).';
+      String message =
+          'Сервертэй холбогдоход алдаа гарлаа (${err.response?.statusCode}).';
       if (data is Map<String, dynamic> && data['message'] != null) {
         message = data['message'].toString();
       }

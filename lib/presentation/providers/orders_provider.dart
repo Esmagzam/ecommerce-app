@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/errors/failures.dart';
 import '../../data/models/order_model.dart';
 import 'core_providers.dart';
@@ -116,8 +117,10 @@ final ordersProvider = NotifierProvider<OrdersNotifier, OrdersState>(() {
   return OrdersNotifier();
 });
 
-final orderDetailProvider =
-    FutureProvider.family<OrderModel, int>((ref, orderId) async {
+final orderDetailProvider = FutureProvider.family<OrderModel, int>((
+  ref,
+  orderId,
+) async {
   final orderRepo = ref.watch(orderRepositoryProvider);
   return await orderRepo.getOrderDetail(orderId);
 });

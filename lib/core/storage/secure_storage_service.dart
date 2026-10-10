@@ -6,15 +6,14 @@ class SecureStorageService {
   static const String _tokenKey = 'auth_token';
 
   SecureStorageService({FlutterSecureStorage? storage})
-      : _storage = storage ??
-            const FlutterSecureStorage(
-              aOptions: AndroidOptions(
-                resetOnError: true,
-              ),
-              iOptions: IOSOptions(
-                accessibility: KeychainAccessibility.first_unlock,
-              ),
-            );
+    : _storage =
+          storage ??
+          const FlutterSecureStorage(
+            aOptions: AndroidOptions(resetOnError: true),
+            iOptions: IOSOptions(
+              accessibility: KeychainAccessibility.first_unlock,
+            ),
+          );
 
   Future<void> saveToken(String token) async {
     await _storage.write(key: _tokenKey, value: token);

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../providers/cart_provider.dart';
 
 class MainLayout extends ConsumerWidget {
   final StatefulNavigationShell navigationShell;
 
-  const MainLayout({
-    super.key,
-    required this.navigationShell,
-  });
+  const MainLayout({super.key, required this.navigationShell});
 
   void _onItemTapped(int index) {
     navigationShell.goBranch(

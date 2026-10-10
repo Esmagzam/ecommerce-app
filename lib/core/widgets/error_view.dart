@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/app_colors.dart';
 import '../errors/failures.dart';
 
@@ -28,11 +29,10 @@ class ErrorView extends StatelessWidget {
     final theme = Theme.of(context);
     final isOffline = isNetworkError;
 
-    final title = isOffline
-        ? 'Интернэт холболтгүй байна'
-        : 'Алдаа гарлаа';
+    final title = isOffline ? 'Интернэт холболтгүй байна' : 'Алдаа гарлаа';
 
-    final message = customMessage ??
+    final message =
+        customMessage ??
         (error is Failure
             ? (error as Failure).message
             : error?.toString() ?? 'Үл мэдэгдэх алдаа гарлаа.');
@@ -51,7 +51,9 @@ class ErrorView extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                isOffline ? Icons.wifi_off_rounded : Icons.error_outline_rounded,
+                isOffline
+                    ? Icons.wifi_off_rounded
+                    : Icons.error_outline_rounded,
                 size: 48,
                 color: isOffline ? AppColors.warning : AppColors.error,
               ),
@@ -77,9 +79,7 @@ class ErrorView extends StatelessWidget {
               onPressed: onRetry,
               icon: const Icon(Icons.refresh_rounded, size: 20),
               label: const Text('Дахин оролдох'),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(160, 46),
-              ),
+              style: ElevatedButton.styleFrom(minimumSize: const Size(160, 46)),
             ),
           ],
         ),

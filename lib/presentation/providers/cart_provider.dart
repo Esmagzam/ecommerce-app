@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../data/models/cart_item_model.dart';
 import '../../data/models/product_model.dart';
 import 'core_providers.dart';
@@ -52,8 +53,9 @@ class CartNotifier extends Notifier<CartState> {
   }
 
   Future<void> addToCart(ProductModel product, {int quantity = 1}) async {
-    final existingIndex =
-        state.items.indexWhere((element) => element.productId == product.id);
+    final existingIndex = state.items.indexWhere(
+      (element) => element.productId == product.id,
+    );
 
     List<CartItemModel> newItems;
     if (existingIndex >= 0) {
@@ -112,8 +114,9 @@ class CartNotifier extends Notifier<CartState> {
   }
 
   Future<void> removeItem(int productId) async {
-    final newItems =
-        state.items.where((element) => element.productId != productId).toList();
+    final newItems = state.items
+        .where((element) => element.productId != productId)
+        .toList();
     state = CartState(items: newItems);
     await _persist();
   }

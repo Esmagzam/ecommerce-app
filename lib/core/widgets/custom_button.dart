@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -30,9 +31,7 @@ class CustomButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         style: OutlinedButton.styleFrom(
           minimumSize: Size.fromHeight(height),
-          side: BorderSide(
-            color: backgroundColor ?? AppColors.primary,
-          ),
+          side: BorderSide(color: backgroundColor ?? AppColors.primary),
         ),
         child: _buildChild(context),
       );
@@ -64,11 +63,7 @@ class CustomButton extends StatelessWidget {
     if (icon != null) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 20),
-          const SizedBox(width: 8),
-          Text(text),
-        ],
+        children: [Icon(icon, size: 20), const SizedBox(width: 8), Text(text)],
       );
     }
 

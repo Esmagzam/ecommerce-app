@@ -20,7 +20,8 @@ class OrderItemModel {
   factory OrderItemModel.fromJson(Map<String, dynamic> json) {
     String? imgUrl;
     if (json['image'] is Map) {
-      imgUrl = (json['image'] as Map)['url'] as String? ??
+      imgUrl =
+          (json['image'] as Map)['url'] as String? ??
           (json['image'] as Map)['thumbnail'] as String?;
     } else if (json['image'] is String) {
       imgUrl = json['image'] as String;
@@ -81,8 +82,10 @@ class OrderModel {
     this.createdAt,
   });
 
-  bool get isCancelled => status.toLowerCase() == 'cancelled' || cancelledAt != null;
-  bool get canBeCancelled => status.toLowerCase() == 'pending' && cancelledAt == null;
+  bool get isCancelled =>
+      status.toLowerCase() == 'cancelled' || cancelledAt != null;
+  bool get canBeCancelled =>
+      status.toLowerCase() == 'pending' && cancelledAt == null;
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     final rawItems = json['items'];

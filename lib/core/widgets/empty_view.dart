@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/app_colors.dart';
 
 class EmptyView extends StatelessWidget {
@@ -32,11 +33,7 @@ class EmptyView extends StatelessWidget {
                 color: AppColors.primary.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                icon,
-                size: 48,
-                color: AppColors.primary,
-              ),
+              child: Icon(icon, size: 48, color: AppColors.primary),
             ),
             const SizedBox(height: 20),
             Text(

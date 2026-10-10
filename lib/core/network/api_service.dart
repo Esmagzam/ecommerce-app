@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+
 import '../config/app_config.dart';
 import '../errors/exceptions.dart';
 import '../storage/secure_storage_service.dart';
@@ -12,19 +13,20 @@ class ApiService {
     Dio? dio,
     required this.secureStorageService,
     void Function()? onUnauthorized,
-  })  : _dio = dio ??
-            Dio(
-              BaseOptions(
-                baseUrl: AppConfig.apiBaseUrl,
-                connectTimeout: const Duration(seconds: 15),
-                receiveTimeout: const Duration(seconds: 15),
-                sendTimeout: const Duration(seconds: 15),
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json',
-                },
-              ),
-            ) {
+  }) : _dio =
+           dio ??
+           Dio(
+             BaseOptions(
+               baseUrl: AppConfig.apiBaseUrl,
+               connectTimeout: const Duration(seconds: 15),
+               receiveTimeout: const Duration(seconds: 15),
+               sendTimeout: const Duration(seconds: 15),
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json',
+               },
+             ),
+           ) {
     _dio.interceptors.add(
       AuthInterceptor(
         secureStorageService: secureStorageService,

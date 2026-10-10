@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/error_view.dart';
@@ -13,10 +14,7 @@ import 'widgets/product_card.dart';
 class ProductDetailScreen extends ConsumerStatefulWidget {
   final int productId;
 
-  const ProductDetailScreen({
-    super.key,
-    required this.productId,
-  });
+  const ProductDetailScreen({super.key, required this.productId});
 
   @override
   ConsumerState<ProductDetailScreen> createState() =>
@@ -51,7 +49,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
         ],
       ),
       body: detailAsync.when(
-        loading: () => const LoadingIndicator(message: 'Бүтээгдэхүүн уншиж байна...'),
+        loading: () =>
+            const LoadingIndicator(message: 'Бүтээгдэхүүн уншиж байна...'),
         error: (error, stack) => ErrorView(
           error: error,
           onRetry: () => ref.refresh(productDetailProvider(widget.productId)),
@@ -101,42 +100,50 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                                 spacing: 8,
                                 runSpacing: 6,
                                 children: [
-                                  ...product.categories.map((c) => Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 4),
-                                        decoration: BoxDecoration(
-                                          color: AppColors.primary
-                                              .withValues(alpha: 0.1),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                                  ...product.categories.map(
+                                    (c) => Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primary.withValues(
+                                          alpha: 0.1,
                                         ),
-                                        child: Text(
-                                          c.name,
-                                          style: const TextStyle(
-                                            color: AppColors.primary,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        c.name,
+                                        style: const TextStyle(
+                                          color: AppColors.primary,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
                                         ),
-                                      )),
-                                  ...product.tags.map((t) => Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 4),
-                                        decoration: BoxDecoration(
-                                          color: AppColors.secondary
-                                              .withValues(alpha: 0.1),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                  ),
+                                  ...product.tags.map(
+                                    (t) => Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.secondary.withValues(
+                                          alpha: 0.1,
                                         ),
-                                        child: Text(
-                                          t.name,
-                                          style: const TextStyle(
-                                            color: AppColors.secondary,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        t.name,
+                                        style: const TextStyle(
+                                          color: AppColors.secondary,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
                                         ),
-                                      )),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             const SizedBox(height: 12),
@@ -178,8 +185,9 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                               style: TextStyle(
                                 fontSize: 14,
                                 height: 1.5,
-                                color: theme.colorScheme.onSurface
-                                    .withValues(alpha: 0.8),
+                                color: theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.8,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 28),
@@ -203,8 +211,9 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                                   itemBuilder: (context, index) {
                                     final relProduct = related[index];
                                     return Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 12.0),
+                                      padding: const EdgeInsets.only(
+                                        right: 12.0,
+                                      ),
                                       child: SizedBox(
                                         width: 170,
                                         child: ProductCard(product: relProduct),
@@ -224,7 +233,9 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
 
               Container(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 14),
+                  horizontal: 20,
+                  vertical: 14,
+                ),
                 decoration: BoxDecoration(
                   color: theme.cardColor,
                   border: Border(
@@ -282,7 +293,9 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       Expanded(
                         child: ElevatedButton.icon(
                           onPressed: () {
-                            ref.read(cartProvider.notifier).addToCart(
+                            ref
+                                .read(cartProvider.notifier)
+                                .addToCart(
                                   product,
                                   quantity: _selectedQuantity,
                                 );
@@ -290,7 +303,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                    '${product.name} ($_selectedQuantity ширхэг) сагсанд нэмэгдлээ'),
+                                  '${product.name} ($_selectedQuantity ширхэг) сагсанд нэмэгдлээ',
+                                ),
                                 duration: const Duration(seconds: 2),
                                 behavior: SnackBarBehavior.floating,
                                 shape: RoundedRectangleBorder(

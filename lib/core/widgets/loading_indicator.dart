@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../constants/app_colors.dart';
 
 class LoadingIndicator extends StatelessWidget {
   final String? message;
   final Color? color;
 
-  const LoadingIndicator({
-    super.key,
-    this.message,
-    this.color,
-  });
+  const LoadingIndicator({super.key, this.message, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,8 @@ class LoadingIndicator extends StatelessWidget {
               message!,
               style: TextStyle(
                 fontSize: 14,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                color: Theme.of(context).colorScheme.onSurface
+                    .withValues(alpha: 0.7),
               ),
               textAlign: TextAlign.center,
             ),

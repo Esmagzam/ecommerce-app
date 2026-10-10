@@ -23,7 +23,9 @@ class NetworkException implements Exception {
 
 class UnauthorizedException implements Exception {
   final String message;
-  const UnauthorizedException([this.message = 'Нэвтрэх хугацаа дууссан байна. Дахин нэвтэрнэ үү.']);
+  const UnauthorizedException([
+    this.message = 'Нэвтрэх хугацаа дууссан байна. Дахин нэвтэрнэ үү.',
+  ]);
 
   @override
   String toString() => 'UnauthorizedException: $message';

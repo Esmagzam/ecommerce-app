@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/errors/failures.dart';
 import '../../data/models/category_model.dart';
 import '../../data/models/product_model.dart';
@@ -67,7 +68,9 @@ class ProductListState {
   }) {
     return ProductListState(
       search: search ?? this.search,
-      selectedCategoryId: clearCategory ? null : (selectedCategoryId ?? this.selectedCategoryId),
+      selectedCategoryId: clearCategory
+          ? null
+          : (selectedCategoryId ?? this.selectedCategoryId),
       selectedTagId: clearTag ? null : (selectedTagId ?? this.selectedTagId),
       minPrice: clearMinPrice ? null : (minPrice ?? this.minPrice),
       maxPrice: clearMaxPrice ? null : (maxPrice ?? this.maxPrice),
@@ -232,5 +235,5 @@ class ProductListNotifier extends Notifier<ProductListState> {
 
 final productListProvider =
     NotifierProvider<ProductListNotifier, ProductListState>(() {
-  return ProductListNotifier();
-});
+      return ProductListNotifier();
+    });

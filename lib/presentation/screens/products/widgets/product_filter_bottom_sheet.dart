@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../data/models/category_model.dart';
 import '../../../../data/models/tag_model.dart';
 
@@ -14,7 +15,8 @@ class ProductFilterBottomSheet extends StatefulWidget {
     int? tagId,
     num? minPrice,
     num? maxPrice,
-  }) onApply;
+  })
+  onApply;
   final VoidCallback onReset;
 
   const ProductFilterBottomSheet({
@@ -114,7 +116,9 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
                         label: const Text('Бүгд'),
                         selected: _selectedCategory == null,
                         onSelected: (selected) {
-                          if (selected) setState(() => _selectedCategory = null);
+                          if (selected) {
+                            setState(() => _selectedCategory = null);
+                          }
                         },
                       ),
                       ...widget.categories.map((c) {
@@ -146,7 +150,9 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
                         label: const Text('Бүгд'),
                         selected: _selectedTag == null,
                         onSelected: (selected) {
-                          if (selected) setState(() => _selectedTag = null);
+                          if (selected) {
+                            setState(() => _selectedTag = null);
+                          }
                         },
                       ),
                       ...widget.tags.map((t) {
@@ -180,7 +186,9 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
                             hintText: 'Доод үнэ',
                             prefixText: '₮ ',
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 10),
+                              horizontal: 12,
+                              vertical: 10,
+                            ),
                           ),
                         ),
                       ),
@@ -196,7 +204,9 @@ class _ProductFilterBottomSheetState extends State<ProductFilterBottomSheet> {
                             hintText: 'Дээд үнэ',
                             prefixText: '₮ ',
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 10),
+                              horizontal: 12,
+                              vertical: 10,
+                            ),
                           ),
                         ),
                       ),

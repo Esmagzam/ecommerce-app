@@ -1,7 +1,10 @@
 class Validator {
   Validator._();
 
-  static String? required(String? value, [String message = 'Энэ талбарыг бөглөнө үү.']) {
+  static String? required(
+    String? value, [
+    String message = 'Энэ талбарыг бөглөнө үү.',
+  ]) {
     if (value == null || value.trim().isEmpty) {
       return message;
     }

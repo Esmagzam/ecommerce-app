@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/errors/failures.dart';
 import '../../data/models/order_model.dart';
 import 'cart_provider.dart';
@@ -28,7 +29,9 @@ class CheckoutState {
   }) {
     return CheckoutState(
       isSubmitting: isSubmitting ?? this.isSubmitting,
-      generalError: clearGeneralError ? null : (generalError ?? this.generalError),
+      generalError: clearGeneralError
+          ? null
+          : (generalError ?? this.generalError),
       fieldErrors: fieldErrors ?? this.fieldErrors,
       createdOrder: createdOrder ?? this.createdOrder,
     );
@@ -73,10 +76,7 @@ class CheckoutNotifier extends Notifier<CheckoutState> {
 
       await ref.read(cartProvider.notifier).clearCart();
 
-      state = CheckoutState(
-        isSubmitting: false,
-        createdOrder: order,
-      );
+      state = CheckoutState(isSubmitting: false, createdOrder: order);
       return order;
     } on Failure catch (f) {
       final mappedFieldErrors = <String, String>{};
@@ -95,16 +95,12 @@ class CheckoutNotifier extends Notifier<CheckoutState> {
       );
       return null;
     } catch (e) {
-      state = CheckoutState(
-        isSubmitting: false,
-        generalError: e.toString(),
-      );
+      state = CheckoutState(isSubmitting: false, generalError: e.toString());
       return null;
     }
   }
 }
 
-final checkoutProvider =
-    NotifierProvider<CheckoutNotifier, CheckoutState>(() {
+final checkoutProvider = NotifierProvider<CheckoutNotifier, CheckoutState>(() {
   return CheckoutNotifier();
 });

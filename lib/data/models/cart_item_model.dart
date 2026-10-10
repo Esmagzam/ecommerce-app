@@ -34,10 +34,14 @@ class CartItemModel {
   factory CartItemModel.fromJson(Map<String, dynamic> json) {
     return CartItemModel(
       productId: json['product_id'] as int? ?? json['id'] as int? ?? 0,
-      productName: json['product_name'] as String? ?? json['name'] as String? ?? '',
+      productName:
+          json['product_name'] as String? ?? json['name'] as String? ?? '',
       unitPrice: json['unit_price'] as num? ?? json['price'] as num? ?? 0,
-      imageUrl: json['image_url'] as String? ??
-          (json['image'] is Map ? (json['image'] as Map)['url'] as String? : null),
+      imageUrl:
+          json['image_url'] as String? ??
+          (json['image'] is Map
+              ? (json['image'] as Map)['url'] as String?
+              : null),
       quantity: json['quantity'] as int? ?? 1,
     );
   }

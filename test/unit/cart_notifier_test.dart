@@ -19,9 +19,7 @@ void main() {
     when(() => mockCartRepo.clearCart()).thenAnswer((_) async {});
 
     container = ProviderContainer(
-      overrides: [
-        cartRepositoryProvider.overrideWithValue(mockCartRepo),
-      ],
+      overrides: [cartRepositoryProvider.overrideWithValue(mockCartRepo)],
     );
   });
 
@@ -30,11 +28,7 @@ void main() {
   });
 
   group('CartNotifier Tests', () {
-    const testProduct = ProductModel(
-      id: 1,
-      name: 'Test Product',
-      price: 15000,
-    );
+    const testProduct = ProductModel(id: 1, name: 'Test Product', price: 15000);
 
     test('initial state is empty', () {
       final state = container.read(cartProvider);
@@ -44,7 +38,9 @@ void main() {
     });
 
     test('addToCart adds new item and calculates totals', () async {
-      await container.read(cartProvider.notifier).addToCart(testProduct, quantity: 2);
+      await container
+          .read(cartProvider.notifier)
+          .addToCart(testProduct, quantity: 2);
 
       final state = container.read(cartProvider);
       expect(state.isEmpty, isFalse);
@@ -57,8 +53,12 @@ void main() {
     });
 
     test('addToCart increments quantity for existing item', () async {
-      await container.read(cartProvider.notifier).addToCart(testProduct, quantity: 1);
-      await container.read(cartProvider.notifier).addToCart(testProduct, quantity: 2);
+      await container
+          .read(cartProvider.notifier)
+          .addToCart(testProduct, quantity: 1);
+      await container
+          .read(cartProvider.notifier)
+          .addToCart(testProduct, quantity: 2);
 
       final state = container.read(cartProvider);
       expect(state.items.length, 1);
@@ -67,7 +67,9 @@ void main() {
     });
 
     test('increment and decrement update quantity', () async {
-      await container.read(cartProvider.notifier).addToCart(testProduct, quantity: 2);
+      await container
+          .read(cartProvider.notifier)
+          .addToCart(testProduct, quantity: 2);
 
       await container.read(cartProvider.notifier).increment(1);
       expect(container.read(cartProvider).items.first.quantity, 3);
@@ -84,7 +86,9 @@ void main() {
     });
 
     test('clearCart empties the cart', () async {
-      await container.read(cartProvider.notifier).addToCart(testProduct, quantity: 1);
+      await container
+          .read(cartProvider.notifier)
+          .addToCart(testProduct, quantity: 1);
       expect(container.read(cartProvider).isEmpty, isFalse);
 
       await container.read(cartProvider.notifier).clearCart();

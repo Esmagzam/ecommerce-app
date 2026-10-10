@@ -20,10 +20,7 @@ class AuthRepository {
     try {
       final response = await apiService.post(
         '/login',
-        data: {
-          'email': email.trim(),
-          'password': password,
-        },
+        data: {'email': email.trim(), 'password': password},
       );
 
       final data = response.data;
@@ -131,13 +128,11 @@ class AuthRepository {
     try {
       final response = await apiService.put(
         '/shop/profile',
-        data: {
-          'name': name.trim(),
-          'email': email.trim(),
-        },
+        data: {'name': name.trim(), 'email': email.trim()},
       );
       final data = response.data;
-      if (data is Map<String, dynamic> && data['data'] is Map<String, dynamic>) {
+      if (data is Map<String, dynamic> &&
+          data['data'] is Map<String, dynamic>) {
         return UserModel.fromJson(data['data'] as Map<String, dynamic>);
       }
       return await getMe();

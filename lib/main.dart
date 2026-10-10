@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import 'core/config/app_config.dart';
 import 'core/constants/app_theme.dart';
 import 'core/storage/cart_storage_service.dart';
@@ -19,9 +20,7 @@ void main() async {
 
   runApp(
     ProviderScope(
-      overrides: [
-        cartStorageServiceProvider.overrideWithValue(cartStorage),
-      ],
+      overrides: [cartStorageServiceProvider.overrideWithValue(cartStorage)],
       child: const EcommerceApp(),
     ),
   );
